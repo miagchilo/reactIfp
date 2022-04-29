@@ -20,7 +20,9 @@ function PlayListcom() {
   return (
     <aside className="block col-1">
       <h2>{data.name}</h2>
-      <p><mark>Playlist id of {playlistId}</mark></p>
+      <p>
+        <mark>Playlist id of {playlistId}</mark>
+      </p>
       <Player
         id={data.videos[index]}
         playNext={() => {
@@ -44,6 +46,7 @@ function PlayListcom() {
               Play
             </button>
             <button
+              data-testid="button"
               onClick={async (e) => {
                 e.preventDefault();
 

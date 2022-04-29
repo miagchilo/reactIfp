@@ -52,7 +52,7 @@ function VideoList() {
     <VidList>
       {data?.map((video, index) => (
         <VidItem classname="leftt">
-          <li key={index}>
+          <p key={index}>
             <VidThumbnail src={video.snippet.thumbnails.url} alt="" />
             {video.title}
             &nbsp;
@@ -68,7 +68,7 @@ function VideoList() {
             >
               Add to Playlist
             </AddtoListbtn>
-          </li>
+          </p>
         </VidItem>
       ))}
     </VidList>
