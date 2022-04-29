@@ -38,7 +38,7 @@ const Form = ({ ThisonSubmit }) => {
         ThisonSubmit(text);
       }}
     >
-      <Label>Playlist Name:</Label>
+      <h3 data-testid="heading">Playlist Name:</h3>
       <PlaylistName
         value={text}
         onChange={(e) => {

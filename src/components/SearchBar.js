@@ -4,7 +4,7 @@ import { AppContext } from '../App';
 import styled from 'styled-components';
 
 
-export const SearchForm = styled.form`
+export const SeForm = styled.form`
   padding-top: -40%;
   padding-bottom: 50px;
   padding-left: 60%;
@@ -35,9 +35,9 @@ export default function SearchBar() {
   };
 
   return (
-    <SearchForm onSubmit={handleSubmit(onSubmit)}>
+    <SeForm onSubmit={handleSubmit(onSubmit)}>
       <SearchVid type="text" {...register('text')} />
       <SearchBtn>Search</SearchBtn>
-    </SearchForm>
+    </SeForm>
   );
 }

@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import App from '../App';
-import Form from './PlayListForm';
+// import Form from './PlayListForm';
 import '@testing-library/jest-dom';
-import Header from './Header';
+import PlayListForm from './PlayListForm';
+
+
 
 test('render h3 element', () => {
-  render(<Form />);
+  render(<PlayListForm />);
 
   // screen.debug();
 
