@@ -1,53 +1,77 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../App';
-import useSWR from 'swr';
-import { Link } from 'react-router-dom';
+import { AppContext, PlaylistContext } from '../App';
 import styled from 'styled-components';
+import { SearchVid } from '../Apis';
+import { UpdatePlaylist } from '../Apis';
+import useSWR from 'swr';
+
+export const VidList = styled.div`
+  margin-top: -30px;
+  margin-left: 800px;
+  width: 100%;
+  // align-items: center;
+`;
+
+export const VidItem = styled.div`
+  
+  padding: 20px;
+  width: 30%;
+  list-style: none;
+  color: black;
+`;
+
+export const VidThumbnail = styled.img`
+  width: 430px;
+  height: 240px;
+  padding-bottom: 20px;
+`;
+
+export const AddtoListbtn = styled.button`
+  margin: 10px;
+  width: 120px;
+  margin-bottom: 61px;
+  height: 40px;
+ 
+  color: black;
+  font-size: 15px;
+`;
 
 function VideoList() {
-  const Div2 = styled.div`
-    margin-top: -30px;
-  `;
-
-  const DIV = styled.div`
-    background: white;
-    padding: 20px;
-    width: 30%;
-    display: flex;
-    text-align: center;
-  `;
-
-  const IMG = styled.img`
-    width: 430px;
-    height: 240px;
-    padding-bottom: 20px;
-  `;
-
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { searchTerm } = useContext(AppContext);
+  const { data: playlistData, playlistId } = useContext(PlaylistContext);
 
-  console.log(searchTerm);
-
-  const { data, error } = useSWR(
-    searchTerm && `https://youtube.thorsteinsson.is/api/search?q=${searchTerm}`,
-    fetcher
-  );
+  const { data, error } = useSWR(searchTerm, SearchVid);
 
   if (error) return <div>failed to load</div>;
 
+  if (!playlistData) {
+    return <p>loading...</p>;
+  }
+
   return (
-    <Div2>
+    <VidList>
       {data?.map((video, index) => (
-        <DIV classname="leftt">
-          <Link to={`videos/${video.id.videoId}`}>
-            <li key={index}>
-              <IMG src={video.snippet.thumbnails.url} alt="" />
-              {video.title}
-            </li>
-          </Link>
-        </DIV>
+        <VidItem classname="leftt">
+          <li key={index}>
+            <VidThumbnail src={video.snippet.thumbnails.url} alt="" />
+            {video.title}
+            &nbsp;
+            <AddtoListbtn
+              type="submit"
+              onClick={async (e) => {
+                e.preventDefault();
+
+                const videoList = [...playlistData.videos, video.id.videoId];
+
+                await UpdatePlaylist(playlistId, '', videoList);
+              }}
+            >
+              Add to Playlist
+            </AddtoListbtn>
+          </li>
+        </VidItem>
       ))}
-    </Div2>
+    </VidList>
   );
 }
 

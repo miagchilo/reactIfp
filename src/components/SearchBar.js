@@ -1,27 +1,32 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { AppContext } from "../App";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import { useForm } from 'react-hook-form';
+import { AppContext } from '../App';
+import styled from 'styled-components';
+
+
+export const SearchForm = styled.form`
+  padding-top: -40%;
+  padding-bottom: 50px;
+  padding-left: 60%;
+`;
+
+export const SearchVid = styled.input`
+  height: 30px;
+  width: 200px;
+
+`;
+
+export const SearchBtn = styled.button`
+  margin-left: 2px;
+  width: 80px;
+  margin-bottom: 61px;
+  color: black;
+  height: 30px;
+  font-size: 15px;
+`;
+
 
 export default function SearchBar() {
-  const FORM = styled.form`
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 40%;
-  `;
-
-  const INPUT = styled.input`
-    height: 40px;
-    width: 200px;
-  `;
-
-  const BUTTON = styled.button`
-    height: 43px;
-    width: 100px;
-    margin-left: 10px;
-    background: red;
-    font-size: 15px;
-  `;
   const { register, handleSubmit } = useForm();
   const { setSearchTerm } = useContext(AppContext);
 
@@ -30,9 +35,9 @@ export default function SearchBar() {
   };
 
   return (
-    <FORM onSubmit={handleSubmit(onSubmit)}>
-      <INPUT type="text" {...register("text")} />
-      <BUTTON>Search</BUTTON>
-    </FORM>
+    <SearchForm onSubmit={handleSubmit(onSubmit)}>
+      <SearchVid type="text" {...register('text')} />
+      <SearchBtn>Search</SearchBtn>
+    </SearchForm>
   );
 }
