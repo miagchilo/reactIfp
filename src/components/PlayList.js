@@ -9,9 +9,6 @@ function PlayListcom() {
   const { data } = useContext(PlaylistContext);
   const [index, setIndex] = useState(0);
 
-  // useEffect(() => {
-  // 	setIndex(Math.max(0, Math.min(index, data.length - 1)));
-  // }, [index]);
 
   if (!data || !data.videos) {
     return <p>loading...</p>;

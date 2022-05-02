@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export const ListForm = styled.form`
-  align-items: center;
-  margin-left: 500px;
+  margin-left: 50px;
   margin-top: -2px;
+  left: -40%;
+  height: 120px
 `;
 
 export const Label = styled.label`
@@ -21,12 +22,17 @@ export const PlaylistName = styled.input`
 `;
 
 export const Createlistbtn = styled.button`
-  margin-left: 2px;
-  width: 80px;
-  margin-bottom: 61px;
-  height: 30px;
- 
-  font-size: 15px;
+color:#fff;
+text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+background-color: #fa5253;
+text-transform: uppercase;
+letter-spacing: 3px;
+padding: 4px 9px;
+margin: 5px;
+font-size: 11px;
+font-weight: 700;
+border-radius: 20px;
+border: 2px solid #bf4142;
 `;
 
 const Form = ({ ThisonSubmit }) => {

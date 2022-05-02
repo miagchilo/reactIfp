@@ -3,7 +3,7 @@ export const SearchVid = (SearchText) => {
   return fetch(url).then((res) => res.json());
 };
 
-export const VidId = (Vid) => {
+export const VideoId = (Vid) => {
   const url = `https://youtube.thorsteinsson.is/api/playlists/${Vid}`;
   return fetch(url).then((res) => res.json());
 };

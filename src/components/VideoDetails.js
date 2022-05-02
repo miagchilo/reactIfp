@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { VidId } from '../Apis';
+import { VideoId } from '../Apis';
 function VideoDetails() {
   const VidDet = styled.div`
     padding-left: 40%;
@@ -12,7 +12,7 @@ function VideoDetails() {
     width: 600px;
   `;
   let { videoId } = useParams();
-  const { data, error } = useSWR(videoId, VidId);
+  const { data, error } = useSWR(videoId, VideoId);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   return (

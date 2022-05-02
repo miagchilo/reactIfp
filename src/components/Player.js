@@ -1,9 +1,12 @@
 import React from 'react';
 import Youtube from 'react-youtube';
+import styled from 'styled-components';
+
+
 
 const Player = ({ id, playNext }) => {
   return (
-    <Youtube
+    <Youtube 
       videoId={id}
       onEnd={playNext}
       opts={{

@@ -1,16 +1,16 @@
-import './App.css';
 import React, { useState, createContext } from 'react';
+import './App.css';
 import VidList from './components/VideoList';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Form from './components/PlayListForm';
-import { CreatePlaylist, VidId } from './Apis';
+import { CreatePlaylist, VideoId } from './Apis';
 import SearchBar from './components/SearchBar';
 import Main from './components/Main';
 import PlayListcom from './components/PlayList';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { GetPlaylist } from './Apis';
-import Header from './components/Header';
+
 
 
 export const AppContext = createContext();
@@ -26,7 +26,6 @@ function App() {
 
   return (
     <div className="App">
-      < Header />
       <PlaylistContext.Provider value={{ data, playlistId }}>
         <AppContext.Provider value={{ searchTerm, setSearchTerm }}>
           <Form
